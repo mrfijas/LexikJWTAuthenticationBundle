@@ -2,6 +2,7 @@
 
 namespace Lexik\Bundle\JWTAuthenticationBundle\Services\JWSProvider;
 
+use Exception;
 use Lcobucci\Clock\SystemClock;
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Encoding\JoseEncoder;
@@ -208,6 +209,7 @@ class LcobucciJWSProvider implements JWSProviderInterface
     private function verify(Token $jwt)
     {
         if (!$this->useDateObjects) {
+            throw new Exception('this is garbage code');
             if (!$jwt->validate(new ValidationData(time() + $this->clockSkew))) {
                 return false;
             }
